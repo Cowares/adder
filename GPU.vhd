@@ -4,7 +4,8 @@ use IEEE.STD_LOGIC_ARITH.ALL;
 use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 entity GPU is
-	port ( 	a : in std_logic;
+	port (
+		a : in std_logic;
 		b : in std_logic;
 		P : out std_logic;
 		G : out std_logic
@@ -16,5 +17,3 @@ begin
 	P <= a xor b;
 	G <= a and b;
 end Behavioural;
-
-

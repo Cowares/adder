@@ -12,12 +12,12 @@ end entity DFFp;
 
 architecture Behavioural of DFFp is
 begin
-store: process(CLK)
-		variable Qint : std_logic_vector(D'LEFT downto D'RIGHT);
-	begin
-		if RISING_EDGE(CLK)  then
-			Qint := D;
-		end if;
-		Q <= Qint;
-	end process;
+store:		process(CLK)
+					variable Qint : std_logic_vector(D'LEFT downto D'RIGHT);
+				begin
+					if RISING_EDGE(CLK)  then
+						Qint := D;
+					end if;
+					Q <= Qint;
+				end process;
 end architecture;
