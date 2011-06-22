@@ -1,17 +1,34 @@
+----------------------------------------------------------------------------------
+-- Company: HTWK-Leipzig
+-- Engineer: Roy Meissner
+-- 
+-- Create Date:    14:58:44 06/22/2011 
+-- Design Name: 	 CarrySaveAdder
+-- Module Name:    CSA - Behavioral 
+-- Project Name:   HTWK-Leipzig CarrySaveAdder
+-- Tool versions:  ISE 13.1
+-- Description:    Architecture is a CarrySaveAdder for n Bit
+-- Revision: 0.1.0
+-- Revision 0.01 - File Created
+----------------------------------------------------------------------------------
+
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
-entity CSA is
-    Port (
-		a : in  STD_LOGIC_VECTOR;
-		b : in  STD_LOGIC_VECTOR;
-      sum : out  STD_LOGIC_VECTOR;
-		cout : out  STD_LOGIC);
-begin
+entity CSA is	
+	Port ( 
+		a : in  STD_LOGIC_VECTOR;					-- Input Vector 1
+      b : in  STD_LOGIC_VECTOR;					-- Input Vector 2
+      sum : out  STD_LOGIC_VECTOR;				-- Output Vector Sum
+      cout : out  STD_LOGIC						-- Input Vector Carry
+	);
+end CSA;
+--begin
+
 --	assert(((A'HIGH-A'LOW) = (b'HIGH-b'LOW))) and ((a'HIGH-a'LOW) = (sum'HIGH-sum'LOW))
 --	report "illegal vector lenght for instance CSA"
 --	severity FAILURE;
-end CSA;
+
 
 architecture Behavioral of CSA is
 	type zwerg is array(0 to (a'HIGH-a'LOW)) of std_logic_vector((a'HIGH-a'LOW) downto 0);
