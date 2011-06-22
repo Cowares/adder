@@ -23,12 +23,6 @@ entity CSA is
       cout : out  STD_LOGIC						-- Output Vector Carry
 	);
 end CSA;
---begin
-
---	assert(((A'HIGH-A'LOW) = (b'HIGH-b'LOW))) and ((a'HIGH-a'LOW) = (sum'HIGH-sum'LOW))
---	report "illegal vector lenght for instance CSA"
---	severity FAILURE;
-
 
 architecture Behavioral of CSA is
 	type matrix_Provisional_Result is array(0 to (a'HIGH-a'LOW)) of std_logic_vector((a'HIGH-a'LOW) downto 0);		-- Matrix(a'length-1,a'length-1)
@@ -67,4 +61,3 @@ begin
 	sum <= subTotal(a'HIGH-a'LOW);																					-- copy subtotals to output sum
 	cout <= carryChain(a'HIGH-a'LOW);																				-- copy carrychain last to carryout
 end Behavioral;
-
