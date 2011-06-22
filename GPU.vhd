@@ -12,7 +12,7 @@ entity GPU is
 	);
 end GPU;
 
-architecture Behavioural of gpu is 
+architecture Behavioural of GPU is 
 begin
 	P <= a xor b;
 	G <= a and b;
