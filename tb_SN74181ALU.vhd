@@ -67,7 +67,3 @@ stimuli:
 		wait;
 	end process;
 end architecture;
-
- 
-
-

@@ -1,5 +1,16 @@
-library ieee;
+library IEEE;
 use ieee.std_logic_1164.all;
+
+library hwet_adder;
+use hwet_adder.all;
+
+package hwet_adder is
+	constant ripple_carry = 0;
+	constant bcla = 1;
+	constant bclar = 2;  
+end hwet_adder;
+ 
+
 
 entity AdderTop is
 	port(
@@ -14,7 +25,7 @@ end entity;
 architecture Instance of AdderTop is
 	component Adder is
 	 Generic (
-		  carry_gen : carry_unit_type
+		  carry_gen : integer
 	 );
 	port (	
 		A : in std_logic_vector;
