@@ -3,11 +3,11 @@
 -- Engineer: Roy Meissner
 -- 
 -- Create Date:    14:58:44 06/22/2011 
--- Design Name: 	 D-FlipFlop-FallingEdge with Enable
+-- Design Name: 	 FullAdder 1 Bit
 -- Module Name:    FA - Behavioral 
 -- Project Name:   HTWK-Leipzig Adder
 -- Tool versions:  ISE 13.1
--- Description:    Architecture is a D-FlipFlop with Enable and Falling Edge switching
+-- Description:    Architecture is a FullAdder for 1 Bit
 -- Revision: 0.1.0
 -- Revision 0.01 - File Created
 ----------------------------------------------------------------------------------
