@@ -19,10 +19,10 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 entity GPU is
 	port ( 	
-		a : in std_logic;					-- Input bit 1
-		b : in std_logic;					-- Input bit 2
-		P : out std_logic;				-- Output Sum(a,b) 
-		G : out std_logic					-- Output Carry (a,b)
+		a: in std_logic;					-- Input bit 1
+		b: in std_logic;					-- Input bit 2
+		P: out std_logic;					-- Output Sum(a,b) 
+		G: out std_logic					-- Output Carry (a,b)
 	);
 end GPU;
 

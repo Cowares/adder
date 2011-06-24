@@ -45,7 +45,7 @@ HnCrlsGen:	if (carry_unit = HAN_CARLSON) generate
 				end generate;
 				
 KoStnGen:	if (carry_unit = KOGGE_STONE) generate
-KoStnInst:		KoggeStoneAdder port map(P, G);
+KoStnInst:		KoggeStoneAdder port map(P, G, cin);
 				end generate;
 				
 --RCUgen: 		if (carry_unit = RIPPLE_CARRY) generate

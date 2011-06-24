@@ -5,6 +5,7 @@ entity KoggeStoneAdder is
 	port (	
 		P: in std_logic_vector;
 		G: in std_logic_vector;
+		cin: in std_logic;
 		cout: out std_logic
 	);
 end KoggeStoneAdder;
