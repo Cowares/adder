@@ -1,12 +1,11 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
-library htwk_adder;
-use hwet_adder.all;
+use common.all;
 	
 entity Adder is
 	Generic (
-		carry_gen : integer
+		carry_unit: carry_unit_t
 	);
 	Port (
 		a : in  STD_LOGIC_VECTOR;
