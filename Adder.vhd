@@ -19,11 +19,11 @@ end Adder;
 architecture Behavioral of Adder is
 	signal P, G, C : std_logic_vector(a'HIGH downto a'LOW);
 	signal PG, GG : std_logic;
-	signal sum: std_logic_vector(a'HIGH downto a'LOW);
+	--signal sum: std_logic_vector(a'HIGH downto a'LOW);
 begin
 
 GPUgen:  	for i in a'LOW to a'HIGH generate
-GPUInst: 		GPU port map(a(i), b(i), P(i), G(i));
+GPUInst: 		entity GPU port map(a(i), b(i), P(i), G(i));
 				end generate;
 				
 
@@ -37,7 +37,7 @@ HnCrlsGen:	if (carry_unit = HAN_CARLSON) generate
 				end generate;
 				
 KoStnGen:	if (carry_unit = KOGGE_STONE) generate
-KoStnInst:		KoggeStoneAdder port map(P, G, cin);
+KoStnInst:		entity KoggeStoneAdder port map(P, G, cin);
 				end generate;			
 				
 SUMgen: 		for i in a'RIGHT to a'LEFT generate
