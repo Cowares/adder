@@ -1,5 +1,6 @@
 library IEEE;
 use ieee.std_logic_1164.all;
+use work.common.all;
 
 entity AdderTop is
 	port (
@@ -12,6 +13,7 @@ entity AdderTop is
 end entity;
 
 architecture Behavioral of AdderTop is
+
 begin
 AdderInst:	entity Adder generic map(HAN_CARLSON) port map(A, B, Cin, F, Cout);
 end architecture;

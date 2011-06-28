@@ -9,6 +9,108 @@ package common is
 	--function log2 (x: integer) return integer;
 	function log2(m: positive) return natural;
 	
+Component Adder
+	Generic (
+		carry_unit: carry_unit_t
+	);
+	Port (
+		a: in  STD_LOGIC_VECTOR;
+		b: in  STD_LOGIC_VECTOR;
+		cin: in  STD_LOGIC;
+		sum: out  STD_LOGIC_VECTOR;
+		cout: out  STD_LOGIC
+	);
+end component;
+
+Component AdderTop 
+	port (
+		A: in std_logic_vector(19 downto 0);
+		B: in std_logic_vector(19 downto 0);
+		Cin: in std_logic;
+		F: out std_logic_vector(19 downto 0);
+		Cout: out std_logic
+	);
+end Component;
+
+Component CLAU
+	port (
+		Cin : in std_logic;
+		P : in std_logic_vector;
+		G : in std_logic_vector;
+		C : out std_logic_vector;
+		PG : out std_logic;
+		GG : out std_logic
+	);
+end Component;
+
+Component CLAURec
+	port ( 	Cin : in std_logic;
+		P : in std_logic_vector;
+		G : in std_logic_vector;
+		C : out std_logic_vector;
+		PG : out std_logic;
+		GG : out std_logic
+	);
+end Component;
+
+Component CLA_Add
+	port (
+		A : in std_logic_vector;
+		B : in std_logic_vector;
+		Cin : in std_logic;
+		S : out std_logic_vector;
+		Cout : out std_logic
+	);
+end Component;
+
+Component CSA	
+	Port ( 
+		a : in  STD_LOGIC_VECTOR;					-- Input Vector 1
+      b : in  STD_LOGIC_VECTOR;					-- Input Vector 2
+      sum : out  STD_LOGIC_VECTOR;				-- Output Vector Sum
+      cout : out  STD_LOGIC						-- Output Vector Carry
+	);
+end Component;
+
+Component FA
+   Port ( 
+			A : in  STD_LOGIC;					-- First input bit
+         B : in  STD_LOGIC;					-- Second input bit
+         Cin : in  STD_LOGIC;					-- Carry input bit
+         S : out  STD_LOGIC;					-- Sum output bit
+         Cout : out  STD_LOGIC				-- Carry output bit
+	);
+end Component;
+
+Component GPU
+	port ( 	
+		a: in std_logic;					-- Input bit 1
+		b: in std_logic;					-- Input bit 2
+		P: out std_logic;					-- Output Sum(a,b) 
+		G: out std_logic					-- Output Carry (a,b)
+	);
+end Component;
+
+Component Prefix
+	port (
+		a: in std_logic;
+		b: in std_logic;
+		c: in std_logic;
+		d: in std_logic;
+		e: out std_logic;
+		f: out std_logic
+	);
+end Component;
+
+Component KoggeStoneAdder
+	port (	
+		P: in std_logic_vector;
+		G: in std_logic_vector;
+		cin: in std_logic;
+		cout: out std_logic
+	);
+end Component;
+
 end common;
 
 package body common is
