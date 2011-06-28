@@ -1,7 +1,7 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
-use common.all;
+use work.common.all;
 	
 entity Adder is
 	Generic (
@@ -19,7 +19,17 @@ end Adder;
 architecture Behavioral of Adder is
 	signal P, G, C : std_logic_vector(a'HIGH downto a'LOW);
 	signal PG, GG : std_logic;
-	signal sum: std_logic_vector(a'HIGH downto a'LOW);
+	signal sum2: std_logic_vector(a'HIGH downto a'LOW);
+	
+	COMPONENT GPU 
+	port ( 	
+		a: in std_logic;					-- Input bit 1
+		b: in std_logic;					-- Input bit 2
+		P: out std_logic;					-- Output Sum(a,b) 
+		G: out std_logic					-- Output Carry (a,b)
+	);
+end COMPONENT;
+
 begin
 
 GPUgen:  	for i in a'LOW to a'HIGH generate
@@ -37,10 +47,10 @@ HnCrlsGen:	if (carry_unit = HAN_CARLSON) generate
 				end generate;
 				
 KoStnGen:	if (carry_unit = KOGGE_STONE) generate
-KoStnInst:		KoggeStoneAdder port map(P, G, cin);
+--KoStnInst:		KoggeStoneAdder port map(P, G, cin);
 				end generate;			
 				
 SUMgen: 		for i in a'RIGHT to a'LEFT generate
-					sum(i) <= P(i) xor C(i);
+					sum2(i) <= P(i) xor C(i);
 				end generate;
 end Behavioral;
