@@ -14,19 +14,6 @@ end entity;
 
 architecture Behavioral of AdderTop is
 
-COMPONENT Adder
-	Generic (
-		carry_unit: carry_unit_t
-	);
-	Port (
-		a: in  STD_LOGIC_VECTOR;
-		b: in  STD_LOGIC_VECTOR;
-		cin: in  STD_LOGIC;
-		sum: out  STD_LOGIC_VECTOR;
-		cout: out  STD_LOGIC
-	);
-end COMPONENT;
-
 begin
 AdderInst:	Adder generic map(HAN_CARLSON) port map(A, B, Cin, F, Cout);
 end architecture;

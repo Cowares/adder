@@ -44,17 +44,6 @@ ARCHITECTURE behavior OF tb_adder_all IS
     -- Component Declaration for the Unit Under Test (UUT)
 	CONSTANT n : integer := 19;
 	
-    COMPONENT AdderTop
-    PORT(
-         A : IN  std_logic_vector(n downto 0);
-         B : IN  std_logic_vector(n downto 0);
-         Cin : IN  std_logic;
-         F : OUT  std_logic_vector(n downto 0);
-         Cout : OUT  std_logic
-        );
-    END COMPONENT;
-    
-
    --Inputs
    signal A : std_logic_vector(n downto 0) := (others => '0');
    signal B : std_logic_vector(n downto 0) := (others => '0');
