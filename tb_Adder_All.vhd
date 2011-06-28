@@ -71,9 +71,9 @@ BEGIN
       wait for 100 ns;	
 	for k in 0 to 1 loop
 		for i in 0 to 2**n loop
-			A <= conv_std_logic_vector(i,n);
-			for j in 0 to 2**n loop
-				B <= conv_std_logic_vector(j,n);
+			A <= conv_std_logic_vector(i,n+1);
+			for j in 0 to 1 loop
+				B <= conv_std_logic_vector(j,n+1);
 				wait for 10 ns;
 				assert (F = A + B) report "Fehler bei der Berrechnung";
 			end loop;

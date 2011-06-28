@@ -26,7 +26,7 @@ forGen:		for i in tP'high to 1 generate
 
 
 stageGen:	for i in 1 to log2(tP'length) generate
-prfxInst:		entity Prefix port map();					
+--prfxInst:		entity Prefix port map();					
 				end generate;
 	
 

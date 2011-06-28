@@ -7,7 +7,7 @@ entity AdderTop is
 		A: in std_logic_vector(19 downto 0);
 		B: in std_logic_vector(19 downto 0);
 		Cin: in std_logic;
-		F: out std_logic_vector(19 downto 0);
+		F: out std_logic_vector(19	downto 0);
 		Cout: out std_logic
 	);
 end entity;
