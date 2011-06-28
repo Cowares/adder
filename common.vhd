@@ -1,4 +1,5 @@
 library IEEE;
+use IEEE.MATH_REAL.ALL;
 use IEEE.STD_LOGIC_1164.all;
 
 package common is
@@ -13,7 +14,7 @@ package body common is
 	
 	function log2 (x: integer) return integer is
 	begin
-		return ln (x) / ln (2);
+		return ceil(ln (x) / ln (2));
 	end log2;
 
 end common;
