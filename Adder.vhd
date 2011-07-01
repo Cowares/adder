@@ -40,11 +40,11 @@ BrnKunGen:	if (carry_unit = BRENT_KUNG) generate
 				end generate;
 				
 HnCrlsGen:	if (carry_unit = HAN_CARLSON) generate
---HnCrlsInst:				
+HnCrlsInst:	HanCarlson generic map (20) port map(P,G,cin,sum);			
 				end generate;
 				
 KoStnGen:	if (carry_unit = KOGGE_STONE) generate
---KoStnInst:		KoggeStoneAdder port map(P, G, cin);
+KoStnInst:		KoggeStoneAdder port map(P, G, cin);
 				end generate;			
 				
 SUMgen: 		for i in a'RIGHT to a'LEFT generate

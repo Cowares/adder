@@ -12,6 +12,9 @@ entity KoggeStoneAdder is
 end KoggeStoneAdder;
 
 architecture Behavioral of KoggeStoneAdder is
+	--variable dist: integer;
+
+
 	signal len: natural := log2(P'length + 1);
 	signal dist: integer;
 	
@@ -19,8 +22,6 @@ architecture Behavioral of KoggeStoneAdder is
 	signal tP: tmpArr;
 	signal tG: tmpArr;
 	
-	--signal TP: std_logic_vector(2 downto 0)(11 downto 0); 
-	--signal tG: std_logic_vector(len downto 0, (P'high - P'low + 1) downto 0);
 begin
 				--P, G, Cin in tmp Feld laden
 				tG(0)(0) <= cin;
@@ -31,22 +32,24 @@ forGen:		for i in tG'high to 1 generate
 				end generate;
 
 
-stGen0:		for i in 1 to len - 1 generate
+
+stGen0:		for i in 1 to (len - 1) generate
 stGen1:			for j in 0 to tG'high generate
 	
+						--dist <= j - i ** 2;
 						
-						dist <= j - i ** 2;
-ifGen:				if (dist > -1) generate
-prfxInst:				entity Prefix port map(tG(i - 1)(j), tP(i - 1)(j),  
+						if (j < 2 ** i) then
+							tG(i)(j) <= tG(i - 1)(j);
+							tP(i)(j) <= tP(i - 1)(j);
+						end if;			
+						
+						
+ifGen:				if (j >= 2 ** i) generate
+prfxInst:				Prefix port map(tG(i - 1)(j), tP(i - 1)(j),  
 														  tG(i - 1)(j - dist), tP(i - 1)(j - dist),
 													     tG(i)(j), tP(i)(j));	
 						end generate;
-						
-						if (dist < 0) then
-							tG(i)(j) <= tG(i - 1)(j);
-							tP(i)(j) <= tP(i - 1)(j);
-						end if;
-													  
+										  
 					end generate;
 				end generate;
 	

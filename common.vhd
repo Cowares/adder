@@ -22,17 +22,7 @@ Component Adder
 	);
 end component;
 
-Component AdderTop 
-	port (
-		A: in std_logic_vector(19 downto 0);
-		B: in std_logic_vector(19 downto 0);
-		Cin: in std_logic;
-		F: out std_logic_vector(19 downto 0);
-		Cout: out std_logic
-	);
-end Component;
-
-Component CLAU
+component CLAU
 	port (
 		Cin : in std_logic;
 		P : in std_logic_vector;
@@ -40,6 +30,17 @@ Component CLAU
 		C : out std_logic_vector;
 		PG : out std_logic;
 		GG : out std_logic
+	);
+end component;
+
+
+Component AdderTop 
+	port (
+		A: in std_logic_vector(19 downto 0);
+		B: in std_logic_vector(19 downto 0);
+		Cin: in std_logic;
+		F: out std_logic_vector(19 downto 0);
+		Cout: out std_logic
 	);
 end Component;
 
@@ -109,6 +110,19 @@ Component KoggeStoneAdder
 		cin: in std_logic;
 		cout: out std_logic
 	);
+end Component;
+
+Component HanCarlson
+    generic(
+    max : integer := 15
+    );
+
+    port(
+    A : in std_logic_vector (max downto 0);
+    B : in std_logic_vector (max downto 0);
+    Cin : in std_logic;
+    Cout : out std_logic_vector (max/2 downto 0)
+    );
 end Component;
 
 end common;
