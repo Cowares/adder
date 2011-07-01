@@ -74,6 +74,6 @@ l6:	if((i mod 2) < 1) generate
 	
 zwe <= aus;
 
-Cout <=
+--Cout <=
 
 end Behavioral;

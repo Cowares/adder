@@ -1,6 +1,6 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
-use common.all;
+use work.common.all;
 
 entity KoggeStoneAdder is
 	port (	
@@ -16,7 +16,7 @@ architecture Behavioral of KoggeStoneAdder is
 	signal len: natural := log2(P'length + 1);
 	--signal dist: integer;
 	
-	type tmpArr is array(len - 1 to 0) of std_logic_vector((P'high - P'low + 1) downto 0);
+	type tmpArr is array(len - 1 downto 0) of std_logic_vector((P'high - P'low + 1) downto 0);
 	signal tP: tmpArr;
 	signal tG: tmpArr;
 	
