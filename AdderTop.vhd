@@ -4,10 +4,10 @@ use work.common.all;
 
 entity AdderTop is
 	port (
-		A: in std_logic_vector(19 downto 0);
-		B: in std_logic_vector(19 downto 0);
+		A: in std_logic_vector;
+		B: in std_logic_vector;
 		Cin: in std_logic;
-		F: out std_logic_vector(19	downto 0);
+		F: out std_logic_vector;
 		Cout: out std_logic
 	);
 end entity;
@@ -15,5 +15,5 @@ end entity;
 architecture Behavioral of AdderTop is
 
 begin
-AdderInst:	entity Adder generic map(HAN_CARLSON) port map(A, B, Cin, F, Cout);
+AdderInst:	Adder generic map(CARRY_LOOK_AHEAD) port map(A, B, Cin, F, Cout);
 end architecture;

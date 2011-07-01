@@ -28,7 +28,6 @@ architecture Behavioral of Adder is
 		G: out std_logic					-- Output Carry (a,b)
 	);
 	end COMPONENT;
-
 begin
 
 GPUgen:  	for i in a'LOW to a'HIGH generate
@@ -40,12 +39,17 @@ BrnKunGen:	if (carry_unit = BRENT_KUNG) generate
 				end generate;
 				
 HnCrlsGen:	if (carry_unit = HAN_CARLSON) generate
-HnCrlsInst:	HanCarlson generic map (20) port map(P,G,cin,sum);			
+HnCrlsInst:	HanCarlson generic map (a'LENGTH-1) port map(P,G,cin,C);			
 				end generate;
 				
 KoStnGen:	if (carry_unit = KOGGE_STONE) generate
-KoStnInst:		KoggeStoneAdder port map(P, G, cin);
+--KoStnInst:		KoggeStoneAdder port map(P, G, cin);
 				end generate;			
+				
+CLAGen:		if (carry_unit = CARRY_LOOK_AHEAD) generate
+CLAInst:		CLAURec port map(Cin,P,G,C,PG,GG);
+				cout <= (PG and Cin) or GG;
+				end generate;
 				
 SUMgen: 		for i in a'RIGHT to a'LEFT generate
 					sum(i) <= P(i) xor C(i);
