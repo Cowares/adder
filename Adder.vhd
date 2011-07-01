@@ -46,6 +46,14 @@ CLAInst:		CLAURec port map(Cin,P,G,C,PG,GG);
 				cout <= (PG and Cin) or GG;
 				end generate;
 				
+CSAGen:		if (carry_unit = CARRY_SAVE_ADDER) generate
+--CSAInst:		;
+				end generate;
+				
+CLARecGen:		if (carry_unit = CARRY_LOOK_AHEAD_whatever) generate
+--CLARecInst:		;
+				end generate;				
+				
 SUMgen: 		for i in a'RIGHT to a'LEFT generate
 					sum(i) <= P(i) xor C(i);
 				end generate;
