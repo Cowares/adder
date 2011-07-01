@@ -4,7 +4,7 @@ use IEEE.STD_LOGIC_1164.all;
 
 package common is
 
-	type carry_unit_t is (BRENT_KUNG, HAN_CARLSON, KOGGE_STONE);
+	type carry_unit_t is (BRENT_KUNG, HAN_CARLSON, KOGGE_STONE, CARRY_LOOK_AHEAD);
 	
 	--function log2 (x: integer) return integer;
 	function log2(m: positive) return natural;
@@ -36,10 +36,10 @@ end component;
 
 Component AdderTop 
 	port (
-		A: in std_logic_vector(19 downto 0);
-		B: in std_logic_vector(19 downto 0);
+		A: in std_logic_vector;
+		B: in std_logic_vector;
 		Cin: in std_logic;
-		F: out std_logic_vector(19 downto 0);
+		F: out std_logic_vector;
 		Cout: out std_logic
 	);
 end Component;

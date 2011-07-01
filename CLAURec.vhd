@@ -12,10 +12,7 @@ entity CLAURec is
 		PG : out std_logic;
 		GG : out std_logic
 	);
---begin
---	assert((P'LENGTH = G'LENGTH) and (P'LENGTH = C'LENGTH));
---	assert((P'LEFT = G'LEFT) and (P'LEFT = C'LEFT));
---	assert(not P'ASCENDING);
+
 end CLAURec;
 
 architecture Behavioural of CLAURec is
@@ -59,22 +56,22 @@ inst7   :	CLAU port map (Cint(0),
 	end generate;
 CLAUab13 : if (12 < P'LENGTH) generate
 inst8	: 	CLAU port map (Cin,PGint, GGint, Cint, PG, GG);
-inst9   :	CLAURec port map (Cint(3),
+inst9   :	CLAU port map (Cint(3),
 			       P(P'LEFT downto 3*(P'LENGTH / 4)+P'RIGHT), 
 			       G(P'LEFT downto 3*(P'LENGTH / 4)+P'RIGHT), 
 			       C(P'LEFT downto 3*(P'LENGTH / 4)+P'RIGHT),
 			       PGint(3),GGint(3));
-inst10   :	CLAURec port map (Cint(2),
+inst10   :	CLAU port map (Cint(2),
 			       P((3 * (P'LENGTH / 4) - 1)+P'RIGHT downto 2*(P'LENGTH / 4)+P'RIGHT), 
 			       G((3 * (P'LENGTH / 4) - 1)+P'RIGHT downto 2*(P'LENGTH / 4)+P'RIGHT), 
 			       C((3 * (P'LENGTH / 4) - 1)+P'RIGHT downto 2*(P'LENGTH / 4)+P'RIGHT),
 			       PGint(2),GGint(2));
-inst11   :	CLAURec port map (Cint(1),
+inst11   :	CLAU port map (Cint(1),
 			       P((2 * (P'LENGTH / 4) - 1)+P'RIGHT downto (P'LENGTH / 4)+P'RIGHT), 
 			       G((2 * (P'LENGTH / 4) - 1)+P'RIGHT downto (P'LENGTH / 4)+P'RIGHT), 
 			       C((2 * (P'LENGTH / 4) - 1)+P'RIGHT downto (P'LENGTH / 4)+P'RIGHT),
 			       PGint(1),GGint(1));
-inst12   :	CLAURec port map (Cint(0),
+inst12   :	CLAU port map (Cint(0),
 			       P((P'LENGTH / 4 - 1)+P'RIGHT downto P'RIGHT), 
 			       G((P'LENGTH / 4 - 1)+P'RIGHT downto P'RIGHT), 
 			       C((P'LENGTH / 4 - 1)+P'RIGHT downto P'RIGHT),
