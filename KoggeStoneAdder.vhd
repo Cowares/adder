@@ -54,6 +54,7 @@ prfxInst:				Prefix port map(tG(i - 1)(j), tP(i - 1)(j),
 g2:			for i in 0 to tg'high - 1 generate
 					sum(i + sum'low) <= tG(i);
 				end generate;
+				
 				cout <= tG(tG'high);
 
 
