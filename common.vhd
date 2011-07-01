@@ -4,7 +4,7 @@ use IEEE.STD_LOGIC_1164.all;
 
 package common is
 
-	type carry_unit_t is (BRENT_KUNG, HAN_CARLSON, KOGGE_STONE, CARRY_LOOK_AHEAD);
+	type carry_unit_t is (BRENT_KUNG, HAN_CARLSON, KOGGE_STONE, CARRY_LOOK_AHEAD, CARRY_SAVE_ADDER, CARRY_LOOK_AHEAD_whatever);
 	
 	--function log2 (x: integer) return integer;
 	function log2(m: positive) return natural;

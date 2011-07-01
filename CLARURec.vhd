@@ -12,10 +12,6 @@ entity CLARURec is
 		PG : out std_logic;
 		GG : out std_logic
 	);
---begin
---	assert((P'LENGTH = G'LENGTH) and (P'LENGTH = C'LENGTH));
---	assert((P'LEFT = G'LEFT) and (P'LEFT = C'LEFT));
---	assert(not P'ASCENDING);
 end CLARURec;
 
 architecture Behavioural of CLARURec is
