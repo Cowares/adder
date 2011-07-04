@@ -32,7 +32,7 @@ forGen:		for i in G'Low to G'High generate
 
 
 stGen0:		for i in 1 to (len - 1) generate
-stGen1:			for j in 0 to tG(0)'High generate
+stGen1:			for j in 0 to G'Length generate
 	
 						--dist <= j - 2 ** i;
 					
@@ -51,11 +51,11 @@ prfxInst:				Prefix port map(tG(i - 1)(j), tP(i - 1)(j),
 					end generate;
 				end generate;
 	
-g2:			for i in 0 to tG(0)'High - 1 generate
-					sum(i + sum'low) <= tG(len - 1)(i);
+g2:			for i in 0 to G'Length generate
+					sum(i + sum'Low) <= tG(len - 1)(i);
 				end generate;
 				
-				cout <= tG(len - 1)(tG'high);
+				cout <= tG(len - 1)(G'Length);
 
 
 end Behavioral;
