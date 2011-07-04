@@ -51,7 +51,7 @@ prfxInst:				Prefix port map(tG(i - 1)(j), tP(i - 1)(j),
 					end generate;
 				end generate;
 	
-g2:			for i in 0 to G'Length generate
+g2:			for i in 0 to G'Length - 1 generate
 					sum(i + sum'Low) <= tG(len - 1)(i);
 				end generate;
 				
