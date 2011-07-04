@@ -24,10 +24,15 @@ begin
 				--P, G, Cin in tmp Feld laden
 				tG(0)(0) <= cin;
 				tP(0)(0) <= '1';
-forGen:		for i in G'Low to G'High generate
-					tG(0)(i - P'Low + 1) <= G(i);
-					tP(0)(i - P'Low + 1) <= P(i);
-				end generate;
+				
+				tG(0)(G'Length - 1 downto 1) <= G;
+				tP(0)(G'Length - 1 downto 1) <= P;
+				
+				
+--forGen:		for i in 1 to G'Length generate
+--					tG(0)(i) <= G(i - 1);
+--					tP(0)(i) <= P(i - 1);
+--				end generate;
 
 
 
