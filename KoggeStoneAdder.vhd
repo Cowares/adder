@@ -25,8 +25,8 @@ begin
 				tG(0)(0) <= cin;
 				tP(0)(0) <= '1';
 				
-				tG(0)(G'Length - 1 downto 1) <= G;
-				tP(0)(G'Length - 1 downto 1) <= P;
+				tG(0)(G'Length downto 1) <= G;
+				tP(0)(G'Length downto 1) <= P;
 				
 				
 --forGen:		for i in 1 to G'Length generate
@@ -60,7 +60,7 @@ prfxInst:				Prefix port map(tG(i - 1)(j), tP(i - 1)(j),
 --					sum(i + sum'Low) <= tG(len - 1)(i);
 --				end generate;
 				
-				sum <= tG(len - 1)(G'High downto 0);
+				sum <= tG(len - 1)(G'Length - 1 downto 0);
 				cout <= tG(len - 1)(G'Length);
 
 
