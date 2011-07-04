@@ -24,15 +24,15 @@ begin
 				--P, G, Cin in tmp Feld laden
 				tG(0)(0) <= cin;
 				tP(0)(0) <= '1';
-forGen:		for i in tG'high to 1 generate
-					tG(0)(i) <= G(i + G'low);
-					tP(0)(i) <= P(i + P'low);
+forGen:		for i in G'Low to G'High generate
+					tG(0)(i - P'Low + 1) <= G(i);
+					tP(0)(i - P'Low + 1) <= P(i);
 				end generate;
 
 
 
 stGen0:		for i in 1 to (len - 1) generate
-stGen1:			for j in 0 to tG'high generate
+stGen1:			for j in 0 to tG(0)'High generate
 	
 						--dist <= j - 2 ** i;
 					
@@ -51,7 +51,7 @@ prfxInst:				Prefix port map(tG(i - 1)(j), tP(i - 1)(j),
 					end generate;
 				end generate;
 	
-g2:			for i in 0 to tg'high - 1 generate
+g2:			for i in 0 to tG(0)'High - 1 generate
 					sum(i + sum'low) <= tG(len - 1)(i);
 				end generate;
 				
