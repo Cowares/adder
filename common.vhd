@@ -114,15 +114,11 @@ Component KoggeStoneAdder
 end Component;
 
 Component HanCarlson
-    generic(
-    max : integer := 15
-    );
-
     port(
-    A : in std_logic_vector (max downto 0);
-    B : in std_logic_vector (max downto 0);
+    A : in std_logic_vector;
+    B : in std_logic_vector;
     Cin : in std_logic;
-    Cout : out std_logic_vector (max/2 downto 0)
+    Cout : out std_logic_vector
     );
 end Component;
 

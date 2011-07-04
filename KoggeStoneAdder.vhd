@@ -1,6 +1,9 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use work.common.all;
+use ieee.numeric_std.all;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 entity KoggeStoneAdder is
 	port (	
@@ -35,11 +38,16 @@ begin
 --				end generate;
 
 
+assert false report "len =" & integer'image(len);
+assert false report "G'LENGTH =" & integer'image(G'LENGTH);
 
 stGen0:		for i in 1 to (len - 1) generate
+bla: assert false report "hier";
 stGen1:			for j in 0 to G'Length generate
 	
 						--dist <= j - 2 ** i;
+						assert false report "2**J =" & integer'image(len);
+						assert false report "2**I =" & integer'image(2**i);
 					
 g1:					if (j < 2 ** i) generate
 							tG(i)(j) <= tG(i - 1)(j);
@@ -60,8 +68,8 @@ prfxInst:				Prefix port map(tG(i - 1)(j), tP(i - 1)(j),
 --					sum(i + sum'Low) <= tG(len - 1)(i);
 --				end generate;
 				
-				sum <= tG(len - 1)(G'Length - 1 downto 0);
-				cout <= tG(len - 1)(G'Length);
+				sum <= tG(2)(G'Length - 1 downto 0);
+				cout <= tG(2)(G'Length);
 
 
 end Behavioral;

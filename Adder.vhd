@@ -31,7 +31,7 @@ BrnKunGen:	if (carry_unit = BRENT_KUNG) generate
 				end generate;
 				
 HnCrlsGen:	if (carry_unit = HAN_CARLSON) generate
-HnCrlsInst:	HanCarlson generic map (a'LENGTH-1) port map(P,G,cin,C);			
+HnCrlsInst:	HanCarlson port map(P,G,cin,C);			
 				end generate;
 				
 KoStnGen:	if (carry_unit = KOGGE_STONE) generate
