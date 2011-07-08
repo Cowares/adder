@@ -64,7 +64,12 @@ BEGIN
 			for j in 0 to 2**n-1 loop
 				B <= conv_std_logic_vector(j,n);
 				wait for 10 ns;
-				assert (F = A + B) report "Fehler bei der Berrechnung";
+				assert ((Cout & F) = conv_std_logic_vector(i+j,n+1)) report "Fehler bei der Berrechnung"
+				& integer'image(conv_integer(A)) & " "
+				& integer'image(conv_integer(B)) & " "
+				& integer'image(conv_integer(Cout)) & " "
+				& integer'image(conv_integer(F)) & " "
+				;
 			end loop;
 		end loop;
 		Cin <= Not Cin;

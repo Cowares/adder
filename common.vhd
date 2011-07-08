@@ -22,6 +22,17 @@ Component Adder
 	);
 end component;
 
+component BrentKung is
+    port(
+    P : in std_logic_vector;
+    G : in std_logic_vector;
+    Cin : in std_logic;
+    Cout : out std_logic;
+	 C : out std_logic_vector
+    );
+    
+end component;
+
 component CLAU
 	port (
 		Cin : in std_logic;

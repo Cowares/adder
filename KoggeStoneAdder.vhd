@@ -16,7 +16,7 @@ entity KoggeStoneAdder is
 end KoggeStoneAdder;
 
 architecture Behavioral of KoggeStoneAdder is
-	signal len: natural := log2(P'length + 1);
+	constant len: natural := log2(P'length + 1);
 	--signal dist: integer;
 	
 	type tmpArr is array(len - 1 downto 0) of std_logic_vector((P'high - P'low + 1) downto 0);
@@ -37,17 +37,11 @@ begin
 --					tP(0)(i) <= P(i - 1);
 --				end generate;
 
-
-assert false report "len =" & integer'image(len);
-assert false report "G'LENGTH =" & integer'image(G'LENGTH);
-
 stGen0:		for i in 1 to (len - 1) generate
 bla: assert false report "hier";
 stGen1:			for j in 0 to G'Length generate
 	
 						--dist <= j - 2 ** i;
-						assert false report "2**J =" & integer'image(len);
-						assert false report "2**I =" & integer'image(2**i);
 					
 g1:					if (j < 2 ** i) generate
 							tG(i)(j) <= tG(i - 1)(j);
@@ -68,8 +62,8 @@ prfxInst:				Prefix port map(tG(i - 1)(j), tP(i - 1)(j),
 --					sum(i + sum'Low) <= tG(len - 1)(i);
 --				end generate;
 				
-				sum <= tG(2)(G'Length - 1 downto 0);
-				cout <= tG(2)(G'Length);
+				sum <= tG(len-1)(G'Length downto 1);
+				cout <= tG(len-1)(G'Length);
 
 
 end Behavioral;
