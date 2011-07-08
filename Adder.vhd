@@ -51,7 +51,8 @@ CLARecGen:		if (carry_unit = CARRY_LOOK_AHEAD_whatever) generate
 --CLARecInst:		;
 				end generate;				
 				
-SUMgen: 		for i in a'RIGHT to a'LEFT generate
+sum(0) <= P(0) xor cin;				
+SUMgen: 		for i in a'RIGHT+1 to a'LEFT generate
 					sum(i) <= P(i) xor C(i);
 				end generate;
 end Behavioral;

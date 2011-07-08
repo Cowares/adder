@@ -38,7 +38,6 @@ begin
 --				end generate;
 
 stGen0:		for i in 1 to (len - 1) generate
-bla: assert false report "hier";
 stGen1:			for j in 0 to G'Length generate
 	
 						--dist <= j - 2 ** i;
