@@ -29,8 +29,9 @@ begin
 
 l2: for j in 0 to log2(P'Length)-1 generate
 l3:    for i in 0 to P'LENGTH-1 generate
-l4:        if ((i>0) and ((i mod 2**(j+1)) = 1)) generate
-                PreINST: BetterPrefix port map (tG(j)(i),
+l4:        if ((i>=1) and ((i mod 2**(j+1)) = 1)) generate
+                PreINST: BetterPrefix port map (
+					 tG(j)(i),
 					 tP(j)(i),
 					 tG(j)(i-2**j),
 					 tP(j)(i-2**j),
