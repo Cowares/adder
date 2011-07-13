@@ -29,7 +29,7 @@ begin
 
 l2: for j in 0 to log2(P'Length)-1 generate
 l3:    for i in 0 to P'LENGTH-1 generate
-l4:        if ((i>=1) and ((i mod 2**(j+1)) = 1)) generate
+l4:        if (i>=1 and mymod(i, 2**(j+1)) = 1) generate
                 PreINST: BetterPrefix port map (
 					 tG(j)(i),
 					 tP(j)(i),
@@ -38,7 +38,7 @@ l4:        if ((i>=1) and ((i mod 2**(j+1)) = 1)) generate
 					 tG(j+1)(i),
 					 tP(j+1)(i));
            end generate;
-l5:        if((i mod 2**(j+1)) /= 1) generate
+l5:        if((mymod(i, 2**(j+1))) /= 1) generate
                 tG(j+1)(i) <= tG(j)(i);
 					 tP(j+1)(i) <= tP(j)(i);
             end generate;
@@ -56,7 +56,7 @@ l61:	for l in 0 to (2**(len-j)-1) generate
 			tP(j+1)(l) <= tP(j)(l);
 		end generate;
 l7:	for i in (2**(len-j)-1) to P'LENGTH-1 generate
-l71:		if(((i-(2**(len-j)-1)) mod (2**(len-j)) = 0) and (i + 2**(len-j - 1) <= P'LENGTH -1)) generate
+l71:		if((mymod((i-(2**(len-j)-1)) , (2**(len-j)))  = 0) and (i + 2**(len-j - 1) <= P'LENGTH -1)) generate
 				--Platzierung der Prefixes
 				PreINST: BetterPrefix port map (
 					tG(j)(i + 2**(len-j - 1)),

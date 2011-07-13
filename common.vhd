@@ -6,6 +6,7 @@ package common is
 
 	type carry_unit_t is (BRENT_KUNG, HAN_CARLSON, KOGGE_STONE, CARRY_LOOK_AHEAD, CARRY_SAVE_ADDER, CARRY_LOOK_AHEAD_whatever);
 	function log2(m: positive) return natural;
+	function mymod(a: integer ; b: integer) return integer;
 	
 Component Adder
 	Generic (
@@ -149,5 +150,18 @@ package body common is
 		end loop;
 		return 0;
 	end function log2;
+	
+	function mymod(a: integer ; b: integer) return integer is
+		begin
+		if(a mod b) /= 0 then
+			if(((a mod b) - b)<0) then
+				return (((a mod b) - b)*(-1));
+			else
+				return (((a mod b) - b));
+			end if;
+			return (a mod b);
+		end if;
+		return 0;
+		end function;
 
 end common;
