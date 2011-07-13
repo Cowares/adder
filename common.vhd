@@ -46,7 +46,7 @@ Component AdderTop
 		A: in std_logic_vector;
 		B: in std_logic_vector;
 		Cin: in std_logic;
-		F: out std_logic_vector;
+		SUM: out std_logic_vector;
 		Cout: out std_logic
 	);
 end Component;
