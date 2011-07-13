@@ -56,7 +56,7 @@ CLARecGen:		if (carry_unit = CARRY_LOOK_AHEAD_whatever) generate
 SUMgen: 		for i in P'Low + 1 to P'High generate
 					sum(i) <= P(i) xor C(i - 1);
 				end generate;
-				cout <= C'High;
+				cout <= C(C'High);
 				
 				
 end Behavioral;
