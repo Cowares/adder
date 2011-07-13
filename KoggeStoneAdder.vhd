@@ -16,7 +16,7 @@ end KoggeStoneAdder;
 architecture Behavioral of KoggeStoneAdder is
 	constant len: natural := log2(P'length);
 	
-	type tmpArr is array(len - 1 downto 0) of std_logic_vector(P'High downto P'Low);
+	type tmpArr is array(len downto 0) of std_logic_vector(P'High downto P'Low);
 	signal tP: tmpArr;
 	signal tG: tmpArr;
 	
@@ -24,7 +24,7 @@ begin
 				tG(0)(P'High downto P'Low) <= G;
 				tP(0)(P'High downto P'Low) <= P;		
 
-stGen0:		for i in 1 to (len - 1) generate
+stGen0:		for i in 1 to len generate
 stGen1:			for j in 0 to P'High generate
 					
 g1:					if (j < 2 ** (i-1)) generate
@@ -42,5 +42,5 @@ prfxInst:				BetterPrefix port map(tG(i - 1)(j), tP(i - 1)(j),
 					end generate;
 				end generate;
 				
-				C <= tG(len-1)(P'High downto P'Low);
+				C <= tG(len)(P'High downto P'Low);
 end Behavioral;
