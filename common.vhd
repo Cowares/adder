@@ -26,8 +26,6 @@ component BrentKung is
     port(
     P : in std_logic_vector;
     G : in std_logic_vector;
-    Cin : in std_logic;
-    Cout : out std_logic;
 	 C : out std_logic_vector
     );
     
@@ -118,19 +116,16 @@ Component KoggeStoneAdder
 	port (	
 		P: in std_logic_vector;
 		G: in std_logic_vector;
-		cin: in std_logic;
-		sum: out std_logic_vector;
-		cout: out std_logic
+		C: out std_logic_vector
 	);
 end Component;
 
 Component HanCarlson
-    port(
-    A : in std_logic_vector;
-    B : in std_logic_vector;
-    Cin : in std_logic;
-    Cout : out std_logic_vector
-    );
+	port(
+		A: in std_logic_vector;
+		B: in std_logic_vector;
+		C: out std_logic_vector
+	);
 end Component;
 
 end common;
