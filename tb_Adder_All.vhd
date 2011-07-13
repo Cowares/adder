@@ -41,6 +41,7 @@ ARCHITECTURE behavior OF tb_adder_all IS
  	--Outputs
    signal Sum : std_logic_vector((n-1) downto 0);
    signal Cout : std_logic;
+	signal bigsum : std_logic_vector(n downto 0) := (others=>'0');
  
 BEGIN
  
@@ -63,11 +64,13 @@ BEGIN
 			A <= conv_std_logic_vector(i,n);
 			for j in 0 to 2**n-1 loop
 				B <= conv_std_logic_vector(j,n);
-				wait for 10 ns;
-				assert ((Cout & Sum) = conv_std_logic_vector(i+j,n+1)) report "Fehler bei der Berrechnung"
-				& integer'image(conv_integer(A)) & " "
-				& integer'image(conv_integer(B)) & " "
-				& integer'image(conv_integer(Cout)) & " "
+				bigsum(n)<=cout;
+				bigsum(n-1 downto 0) <= Sum+1;
+				wait for 20 ns;
+				assert (conv_integer(cout)*2**n+conv_integer(sum) = i+j+conv_integer(cin)) report "Fehler bei der Berrechnung A:"
+				& integer'image(conv_integer(A)) & " B: "
+				& integer'image(conv_integer(B)) & " Cout: "
+				& integer'image(conv_integer(Cout)) & " Sum: "
 				& integer'image(conv_integer(Sum)) & " "
 				;
 			end loop;

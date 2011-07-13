@@ -15,5 +15,5 @@ end entity;
 architecture Behavioral of AdderTop is
 
 begin
-AdderInst:	Adder generic map(BRENT_KUNG) port map(A, B, Cin, Sum, Cout);
+AdderInst:	Adder generic map(KOGGE_STONE) port map(A, B, Cin, Sum, Cout);
 end architecture;
