@@ -20,6 +20,7 @@ architecture Behavioral of KoggeStoneAdder is
 	signal tP: tmpArr;
 	signal tG: tmpArr;
 	
+	
 begin			
 				tG(0)(P'High downto P'Low) <= G;
 				tP(0)(P'High downto P'Low) <= P;		
