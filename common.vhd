@@ -5,8 +5,6 @@ use IEEE.STD_LOGIC_1164.all;
 package common is
 
 	type carry_unit_t is (BRENT_KUNG, HAN_CARLSON, KOGGE_STONE, CARRY_LOOK_AHEAD, CARRY_SAVE_ADDER, CARRY_LOOK_AHEAD_whatever);
-	
-	--function log2 (x: integer) return integer;
 	function log2(m: positive) return natural;
 	
 Component Adder
@@ -23,11 +21,11 @@ Component Adder
 end component;
 
 component BrentKung is
-    port(
-    P : in std_logic_vector;
-    G : in std_logic_vector;
-	 C : out std_logic_vector
-    );
+	port(
+		P: in std_logic_vector;
+		G: in std_logic_vector;
+		C: out std_logic_vector
+	);
     
 end component;
 
@@ -149,11 +147,7 @@ package body common is
 				return n;
 			end if;
 		end loop;
+		return 0;
 	end function log2;
-	
---function log2 (x: integer) return integer is
---	begin
---		return ceil(LOG(x) / LOG(2));
---	end log2;
 
 end common;
