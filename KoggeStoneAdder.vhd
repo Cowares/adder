@@ -34,7 +34,7 @@ g1:					if (j < 2 ** i) generate
 						
 						
 ifGen:				if (j >= 2 ** i) generate
-prfxInst:				Prefix port map(tG(i - 1)(j), tP(i - 1)(j),  
+prfxInst:				BetterPrefix port map(tG(i - 1)(j), tP(i - 1)(j),  
 														  tG(i - 1)(j - 2 ** i), tP(i - 1)(j - 2 ** i),
 													     tG(i)(j), tP(i)(j));	
 						end generate;

@@ -112,6 +112,16 @@ Component Prefix
 	);
 end Component;
 
+Component BetterPrefix is
+	Port (
+		Gi: in STD_LOGIC;
+		Pi: in STD_LOGIC;
+		Gp: in STD_LOGIC;
+		Pp: in STD_LOGIC;
+		G: out STD_LOGIC;
+      P: out STD_LOGIC);
+end Component;
+
 Component KoggeStoneAdder
 	port (	
 		P: in std_logic_vector;
