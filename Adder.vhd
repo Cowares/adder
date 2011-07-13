@@ -27,20 +27,20 @@ GPUInst: 		GPU port map(a(i), b(i), P(i), G(i));
 				end generate;
 				
 BrnKunGen:	if (carry_unit = BRENT_KUNG) generate
-BrnKunInt:	BrentKung port map(P,G,cin,Cout,C);			
+BrnKunInt:		BrentKung port map(P, G, C);			
 				end generate;
 				
 HnCrlsGen:	if (carry_unit = HAN_CARLSON) generate
-HnCrlsInst:	HanCarlson port map(P,G,cin,C);			
+HnCrlsInst:		HanCarlson port map(P, G, C);			
 				end generate;
 				
 KoStnGen:	if (carry_unit = KOGGE_STONE) generate
-KoStnInst:		KoggeStoneAdder port map(P, G, cin,C,cout);
+KoStnInst:		KoggeStoneAdder port map(P, G, C);
 				end generate;			
 				
 CLAGen:		if (carry_unit = CARRY_LOOK_AHEAD) generate
-CLAInst:		CLAURec port map(Cin,P,G,C,PG,GG);
-				cout <= (PG and Cin) or GG;
+CLAInst:			CLAURec port map(Cin,P,G,C,PG,GG);
+					cout <= (PG and Cin) or GG;
 				end generate;
 				
 CSAGen:		if (carry_unit = CARRY_SAVE_ADDER) generate
@@ -49,10 +49,14 @@ CSAGen:		if (carry_unit = CARRY_SAVE_ADDER) generate
 				
 CLARecGen:		if (carry_unit = CARRY_LOOK_AHEAD_whatever) generate
 --CLARecInst:		;
-				end generate;				
+				end generate;		
+
 				
-sum(0) <= P(0) xor cin;				
-SUMgen: 		for i in a'RIGHT+1 to a'LEFT generate
-					sum(i) <= P(i) xor C(i);
+				sum(0) <= P(0) xor cin;
+SUMgen: 		for i in P'Low + 1 to P'High generate
+					sum(i) <= P(i) xor C(i - 1);
 				end generate;
+				cout <= C'High;
+				
+				
 end Behavioral;
