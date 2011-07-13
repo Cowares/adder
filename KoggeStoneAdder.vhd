@@ -27,15 +27,15 @@ begin
 stGen0:		for i in 1 to (len - 1) generate
 stGen1:			for j in 0 to P'High generate
 					
-g1:					if (j < 2 ** i) generate
+g1:					if (j < 2 ** (i-1)) generate
 							tG(i)(j) <= tG(i - 1)(j);
 							tP(i)(j) <= tP(i - 1)(j);
 						end generate;			
 						
 						
-ifGen:				if (j >= 2 ** i) generate
+ifGen:				if (j >= 2 ** (i-1)) generate
 prfxInst:				BetterPrefix port map(tG(i - 1)(j), tP(i - 1)(j),  
-														  tG(i - 1)(j - 2 ** i), tP(i - 1)(j - 2 ** i),
+														  tG(i - 1)(j - 2 ** (i-1)), tP(i - 1)(j - 2 ** (i-1)),
 													     tG(i)(j), tP(i)(j));	
 						end generate;
 										  
