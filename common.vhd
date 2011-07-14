@@ -25,6 +25,7 @@ component BrentKung is
 	port(
 		P: in std_logic_vector;
 		G: in std_logic_vector;
+		cin: in std_logic;
 		C: out std_logic_vector
 	);
     
