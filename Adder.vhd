@@ -35,7 +35,7 @@ HnCrlsInst:		HanCarlson port map(P, G, C);
 				end generate;
 				
 KoStnGen:	if (carry_unit = KOGGE_STONE) generate
-KoStnInst:		KoggeStoneAdder port map(P, G, C);
+KoStnInst:		KoggeStoneAdder port map(P, G, cin, C);
 				end generate;			
 				
 CLAGen:		if (carry_unit = CARRY_LOOK_AHEAD) generate

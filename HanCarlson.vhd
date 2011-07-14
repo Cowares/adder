@@ -27,7 +27,7 @@ zweP(1)(0)<=zweP(0)(0);
 zweG(1)(0)<=zweG(0)(0);
 l2:for i in 1 to max-1 generate
 	l3:if((i mod 2) = 1) generate
-		PreINST: Prefix port map (zweP(0)(i),
+		PreINST: BetterPrefix port map (zweP(0)(i),
 										  zweG(0)(i),
 										  zweP(0)(i-1),
 										  zweG(0)(i-1),

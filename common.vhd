@@ -101,17 +101,6 @@ Component GPU
 	);
 end Component;
 
-Component Prefix
-	port (
-		a: in std_logic;
-		b: in std_logic;
-		c: in std_logic;
-		d: in std_logic;
-		e: out std_logic;
-		f: out std_logic
-	);
-end Component;
-
 Component BetterPrefix is
 	Port (
 		Gi: in STD_LOGIC;
@@ -126,6 +115,7 @@ Component KoggeStoneAdder
 	port (	
 		P: in std_logic_vector;
 		G: in std_logic_vector;
+		CIn: in std_logic;
 		C: out std_logic_vector
 	);
 end Component;
