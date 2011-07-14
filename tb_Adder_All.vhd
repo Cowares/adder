@@ -69,8 +69,9 @@ BEGIN
 				wait for 20 ns;
 				assert (conv_integer(cout)*2**n+conv_integer(sum) = i+j+conv_integer(cin)) report "Fehler bei der Berrechnung A:"
 				& integer'image(conv_integer(A)) & " B: "
-				& integer'image(conv_integer(B)) & " Cout: "
-				& integer'image(conv_integer(Cout)) & " Sum: "
+				& integer'image(conv_integer(B)) & " Cin: "
+				& integer'image(conv_integer(Cin)) & " Cout: "
+				& integer'image(conv_integer(Cout)) & " Sum "
 				& integer'image(conv_integer(Sum)) & " "
 				;
 			end loop;

@@ -26,8 +26,8 @@ architecture Behavioral of KoggeStoneAdder is
 begin			
 				tG(0)(0) <= CIn;
 				tP(0)(0) <= '1';
-				tG(0)(P'High - 1 downto P'Low) <= G(G'High - 1 downto G'Low);
-				tP(0)(P'High - 1 downto P'Low) <= P(P'High - 1 downto P'Low);		
+				tG(0)(P'High downto P'Low+1) <= G(G'High - 1 downto G'Low);
+				tP(0)(P'High downto P'Low+1) <= P(P'High - 1 downto P'Low);		
 
 stGen0:		for i in 1 to len generate
 stGen1:			for j in 0 to P'High generate
@@ -47,7 +47,7 @@ prfxInst:				BetterPrefix port map(tG(i - 1)(j), tP(i - 1)(j),
 					end generate;
 				end generate;
 				
-				C(C'High - 1 downto C'Low) <= tG(len)(P'High - 1 downto P'Low);
+				C(C'High - 1 downto C'Low) <= tG(len)(P'High downto P'Low+1);
 msb:			BetterPrefix port map (G(G'High), P(P'High),
 												tG(len)(P'High - 1), tP(len)(P'High - 1),
 												C(C'High), dummy);				
