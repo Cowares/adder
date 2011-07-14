@@ -48,6 +48,8 @@ l5:        if((mymod(i, 2**(j+1))) /= 1) generate
 					 tP(j+1)(i) <= tP(j)(i);
             end generate;
         end generate;
+		   --tG(j+1)(G'Length) <= tG(j)(G'Length);
+			--tP(j+1)(P'Length) <= tP(j)(P'Length);
     end generate;
 	 
 ----oberen baum gebaut 
@@ -72,12 +74,12 @@ l71:		if((mymod((i-(2**(len-j)-1)) , (2**(len-j)))  = 0) and (i + 2**(len-j - 1)
 					tP(j+1)(i + 2**(len-j - 1)));
 					--weiterleitung vom aktuellen i zur gebauten prefixeinheit
 l73:				for k in i to ((i + 2**(len-j - 1)-1) ) generate
-						tG(j+1)(i) <= tG(j)(i);
-						tP(j+1)(i) <= tP(j)(i);				
+						tG(j+1)(k) <= tG(j)(k);
+						tP(j+1)(k) <= tP(j)(k);				
 						end generate;
 l74:				for k in ((i + 2**(len-j - 1)+1) ) to i+2**(len-j) generate
-						tG(j+1)(i) <= tG(j)(i);
-						tP(j+1)(i) <= tP(j)(i);				
+						tG(j+1)(k) <= tG(j)(k);
+						tP(j+1)(k) <= tP(j)(k);				
 						end generate;	
 					end generate; 
 l75:			if((i + 2**(len-j-1)) > (P'LENGTH - 1)) generate
@@ -87,16 +89,18 @@ l76:				for k in i to P'LENGTH-1 generate
 					end generate;
 			  end generate;
         end generate;
+		   --tG(j+1)(G'Length) <= tG(j)(G'Length);
+			--tP(j+1)(P'Length) <= tP(j)(P'Length);
 		  end generate;
 	 
 --unteren baum gebaut
 
 --Nachverarbeitung des höchsten bits
 		PreINST: BetterPrefix port map (
-					tG(len-1)(G'LENGTH-1),
-					tP(len-1)(P'LENGTH-1),
-					tG(len)(G'LENGTH),
-					tP(len)(P'LENGTH),
+					tG(0)(G'LENGTH),
+					tP(0)(P'LENGTH),
+					tG(len)(G'LENGTH-1),
+					tP(len)(P'LENGTH-1),
 					tG(len)(G'LENGTH),
 					tP(len)(P'LENGTH));
 	 	 

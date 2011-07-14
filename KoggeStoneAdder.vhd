@@ -47,9 +47,10 @@ prfxInst:				BetterPrefix port map(tG(i - 1)(j), tP(i - 1)(j),
 					end generate;
 				end generate;
 				
-				C(C'High - 1 downto C'Low) <= tG(len)(P'High downto P'Low+1);
+				
 msb:			BetterPrefix port map (G(G'High), P(P'High),
-												tG(len)(P'High - 1), tP(len)(P'High - 1),
-												C(C'High), dummy);				
+												tG(len)(P'High), tP(len)(P'High),
+												C(C'High), dummy);	
+				C(C'High - 1 downto C'Low) <= tG(len)(P'High downto P'Low+1);												
 				
 end Behavioral;

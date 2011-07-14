@@ -31,7 +31,7 @@ END tb_adder_all;
 ARCHITECTURE behavior OF tb_adder_all IS 
  
     -- Component Declaration for the Unit Under Test (UUT)
-	CONSTANT n : integer := 4;
+	CONSTANT n : integer := 16;
 	
    --Inputs
    signal A : std_logic_vector((n-1) downto 0) := (others => '0');
@@ -66,7 +66,7 @@ BEGIN
 				B <= conv_std_logic_vector(j,n);
 				bigsum(n)<=cout;
 				bigsum(n-1 downto 0) <= Sum+1;
-				wait for 20 ns;
+				wait for 1 ns;
 				assert (conv_integer(cout)*2**n+conv_integer(sum) = i+j+conv_integer(cin)) report "Fehler bei der Berrechnung A:"
 				& integer'image(conv_integer(A)) & " B: "
 				& integer'image(conv_integer(B)) & " Cin: "
