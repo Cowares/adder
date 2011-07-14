@@ -23,8 +23,6 @@ type tmpArr is array(len downto 0) of std_logic_vector(P'LENGTH downto 0);
 	signal tG: tmpArr;
 
 begin
---cin auf G0
---P0=1
 tP(0)(0) <= '1';
 tG(0)(0) <= cin;
 	tP(0)(P'Length downto 1) <= P;
@@ -48,14 +46,10 @@ l5:        if((mymod(i, 2**(j+1))) /= 1) generate
 					 tP(j+1)(i) <= tP(j)(i);
             end generate;
         end generate;
-		   --tG(j+1)(G'Length) <= tG(j)(G'Length);
-			--tP(j+1)(P'Length) <= tP(j)(P'Length);
     end generate;
 	 
 ----oberen baum gebaut 
 ----unteren baum bauen    
-
-
     
 l6: for j in log2(P'Length) to len-1 generate
 l61:	for l in 0 to (2**(len-j)-1) generate
@@ -77,6 +71,7 @@ l73:				for k in i to ((i + 2**(len-j - 1)-1) ) generate
 						tG(j+1)(k) <= tG(j)(k);
 						tP(j+1)(k) <= tP(j)(k);				
 						end generate;
+					--weiterleitung von der gebauten prefixeinheit zur nächsten
 l74:				for k in ((i + 2**(len-j - 1)+1) ) to i+2**(len-j) generate
 						tG(j+1)(k) <= tG(j)(k);
 						tP(j+1)(k) <= tP(j)(k);				
@@ -89,13 +84,12 @@ l76:				for k in i to P'LENGTH-1 generate
 					end generate;
 			  end generate;
         end generate;
-		   --tG(j+1)(G'Length) <= tG(j)(G'Length);
-			--tP(j+1)(P'Length) <= tP(j)(P'Length);
 		  end generate;
 	 
 --unteren baum gebaut
 
 --Nachverarbeitung des höchsten bits
+
 		PreINST: BetterPrefix port map (
 					tG(0)(G'LENGTH),
 					tP(0)(P'LENGTH),

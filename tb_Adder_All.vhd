@@ -31,7 +31,7 @@ END tb_adder_all;
 ARCHITECTURE behavior OF tb_adder_all IS 
  
     -- Component Declaration for the Unit Under Test (UUT)
-	CONSTANT n : integer := 16;
+	CONSTANT n : integer := 8;
 	
    --Inputs
    signal A : std_logic_vector((n-1) downto 0) := (others => '0');

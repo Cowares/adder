@@ -4,7 +4,7 @@ use IEEE.STD_LOGIC_1164.all;
 
 package common is
 
-	type carry_unit_t is (BRENT_KUNG, HAN_CARLSON, KOGGE_STONE, CARRY_LOOK_AHEAD, CARRY_SAVE_ADDER, CARRY_LOOK_AHEAD_whatever);
+	type carry_unit_t is (BRENT_KUNG, HAN_CARLSON, KOGGE_STONE, CARRY_LOOK_AHEAD);
 	function log2(m: positive) return natural;
 	function mymod(a: integer ; b: integer) return integer;
 	
@@ -122,9 +122,10 @@ end Component;
 
 Component HanCarlson
 	port(
-		A: in std_logic_vector;
-		B: in std_logic_vector;
-		C: out std_logic_vector
+	 P : in std_logic_vector;
+    G : in std_logic_vector;
+    Cin : in std_logic;
+    Cout : out std_logic_vector
 	);
 end Component;
 
