@@ -9,6 +9,7 @@ entity BrentKung is
     port(
     P : in std_logic_vector;
     G : in std_logic_vector;
+	 cin : in std_logic;
 	 C : out std_logic_vector
     );
     
@@ -17,13 +18,17 @@ end BrentKung;
 architecture Behavioral of BrentKung is
 constant len: natural := 2*(log2(P'LENGTH)-1)+1;
 constant bau:natural := 0;
-type tmpArr is array(len downto 0) of std_logic_vector(P'LENGTH-1 downto 0);
+type tmpArr is array(len downto 0) of std_logic_vector(P'LENGTH downto 0);
 	signal tP: tmpArr;
 	signal tG: tmpArr;
 
 begin
-	tP(0)(P'Length-1 downto 0) <= P;
-   tG(0)(G'Length-1 downto 0) <= G;
+--cin auf G0
+--P0=1
+tP(0)(0) <= '1';
+tG(0)(0) <= cin;
+	tP(0)(P'Length downto 1) <= P;
+   tG(0)(G'Length downto 1) <= G;
 
 --oberen baum bauen 
 
@@ -85,6 +90,15 @@ l76:				for k in i to P'LENGTH-1 generate
 		  end generate;
 	 
 --unteren baum gebaut
+
+--Nachverarbeitung des höchsten bits
+		PreINST: BetterPrefix port map (
+					tG(len-1)(G'LENGTH-1),
+					tP(len-1)(P'LENGTH-1),
+					tG(len)(G'LENGTH),
+					tP(len)(P'LENGTH),
+					tG(len)(G'LENGTH),
+					tP(len)(P'LENGTH));
 	 	 
-c <= tG(len)(G'Length-1 downto 0);
+c <= tG(len)(G'Length downto 1);
 end Behavioral;

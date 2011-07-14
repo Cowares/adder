@@ -27,7 +27,7 @@ GPUInst: 		GPU port map(a(i), b(i), P(i), G(i));
 				end generate;
 				
 BrnKunGen:	if (carry_unit = BRENT_KUNG) generate
-BrnKunInt:		BrentKung port map(P, G, C);			
+BrnKunInt:		BrentKung port map(P, G, cin, C);			
 				end generate;
 				
 HnCrlsGen:	if (carry_unit = HAN_CARLSON) generate
